@@ -1,13 +1,11 @@
 
 /* Debugging information:
 *
-* plasma-interactiveconsole --kwin
-* /usr/share/kwin-wayland/scripts
-* journalctl -f QT_CATEGORY=js QT_CATEGORY=kwin_scripting
-* ~/.local/share/kwin/scripts/.
-* cp -r kwin_center_window ~/.local/share/kwin/scripts/.
+* code editor and tester: plasma-interactiveconsole --kwin
+* root stuff: /usr/share/kwin-wayland/scripts
+* regular user stuff: ~/.local/share/kwin/scripts/.
+* see logs: journalctl -f QT_CATEGORY=js QT_CATEGORY=kwin_scripting
 *
-* To re-test, copy the contets over to `~/.local/share/kwin/scripts/.` and then turn off and turn on the script under System Settings -> Window Management -> KWin Scripts
 */
 
 // Configuration area.
@@ -22,6 +20,17 @@ const main = () => {
       print("Coefficient variable has a wrong value, should a float value in range [0 ... 1]");
       return;
     }
+
+    if (workspace.activeWindow.fullScreen || workspace.activeWindow.noBorder) {
+      print("Either fullscreen or borderless, not centering window.");
+      return;
+    }
+
+    if (!workspace.activeWindow.resizeable) {
+      print("Window is not resizeable for some reason, not centering window.");
+      return;
+    }
+
     function cloneObject(obj) {
         const copy = Object.create(Object.getPrototypeOf(obj));
         for (const key in obj) {
@@ -44,11 +53,6 @@ const main = () => {
     desiredGeometry.x = workspace.activeScreen.geometry.x + workspace.activeScreen.geometry.width * (1 - coefficient) / 2
     desiredGeometry.y = workspace.activeScreen.geometry.y + workspace.activeScreen.geometry.height * (1 - coefficient) / 2
 
-    if (workspace.activeWindow.fullScreen || workspace.activeWindow.noBorder) {
-      print("Either fullscreen or borderless, not centering window.");
-      return;
-    }
-
     // workspace.activeWindow.maximizeMode
     // * 0 = floating window.
     // * 1 = no idea if such even exists.
@@ -62,7 +66,7 @@ const main = () => {
         // Works but throws an error and the program doesn't execute any further; so have to ignore error with try-catch.
         workspace.activeWindow.frameGeometry = desiredGeometry;
     } catch (err) {
-        print("Caught an expected error, ignoring and continuing execution.");
+        print("Caught an EXPECTED error, all good, ignoring and continuing execution.");
     }
 }
 
