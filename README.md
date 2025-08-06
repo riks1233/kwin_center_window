@@ -8,6 +8,7 @@
 
   ```bash
   git clone https://github.com/riks1233/kwin_center_window.git
+  mkdir -p ~/.local/share/kwin/scripts
   cp -r kwin_center_window ~/.local/share/kwin/scripts/.
   ```
 - KDE System Settings -> Window Management -> KWin Scripts -> enable Center Window script (which should now be here due to copying to `~/.local/share/kwin/scripts/.`).
