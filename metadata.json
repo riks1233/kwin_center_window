@@ -1,18 +1,22 @@
 {
-    "KPackageStructure": "KWin/Script",
     "KPlugin": {
+        "Name": "Center Active Window",
+        "Description": "Unmaximizes and centers window to 2/3 of the active screen",
+        "Icon": "preferences-system-windows-script-test",
+        
         "Authors": [
             {
                 "Email": "a@a.com",
                 "Name": "Bob Ross"
             }
         ],
-        "Description": "Unmaximizes and centers window to 2/3 of the active screen",
-        "Icon": "preferences-system-windows-script-test",
         "Id": "kwin_center_window",
-        "License": "GPL",
-        "Name": "Center Window"
+        "Version": "1.0",
+        "License": "GPLv3",
+        "Website": "https://github.com/riks1233/kwin_center_window"
     },
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js",
     "X-KDE-ConfigModule": "kcm_kwin4_genericscripted",
-    "X-Plasma-API": "javascript"
+    "KPackageStructure": "KWin/Script"
 }

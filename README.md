@@ -11,7 +11,7 @@ A keyboard shortcut for KDE Wayland Plasma 6 Window Management to resize the cur
   mkdir -p ~/.local/share/kwin/scripts
   mv kwin_center_window ~/.local/share/kwin/scripts/.
   ```
-- KDE System Settings app -> search and select "KWin Scripts" (will be under the Window Management section) -> enable the `Center Window` entry (which should now be here due to copying to `~/.local/share/kwin/scripts/.`).
+- KDE System Settings app -> search and select "KWin Scripts" (will be under the Window Management section) -> enable the `Center Active Window` entry (which should now be here due to copying to `~/.local/share/kwin/scripts/.`).
 - KDE System Settings app -> search and select "Shortcuts" (will be under the Keyboard section) -> Window Management -> configure your desired shortcut for the `Center Active Window` entry.
 - Enjoy!
 
@@ -23,3 +23,7 @@ A keyboard shortcut for KDE Wayland Plasma 6 Window Management to resize the cur
 # Behavior debugging in specific apps/windows
 
 - Try running `journalctl -f QT_CATEGORY=js QT_CATEGORY=kwin_scripting` in a terminal and then activate the shortcut on your app/window. Look in the terminal window if you see anything suspicious.
+
+# Useful links
+
+- https://develop.kde.org/docs/plasma/kwin/
